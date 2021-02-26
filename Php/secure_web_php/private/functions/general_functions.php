@@ -5,5 +5,5 @@
 // to be turned on in php.ini.
 function redirect_to($new_location) {
   header("Location: " . $new_location);
-  exit;
+  exit();
 }

@@ -10,11 +10,6 @@ function sql_prep($string) {
 	} else {
 		// addslashes is almost the same, but not quite as secure.
 		// Fallback only when there is no database connection available.
-	 	return addslashes($string);
+		return addslashes($string);
 	}
 }
-
-// Usage:
-// $sql_safe_username = sql_prep($_POST['username']);
-
-?>

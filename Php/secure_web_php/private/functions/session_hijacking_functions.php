@@ -14,7 +14,7 @@ function end_session() {
 	// Use both for compatibility with all browsers
 	// and all versions of PHP.
 	session_unset();
-  session_destroy();
+    session_destroy();
 }
 
 // Does the request IP match the stored value?
@@ -115,8 +115,8 @@ function after_successful_login() {
 	$_SESSION['logged_in'] = true;
 
 	// Save these values in the session, even when checks aren't enabled 
-  $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
-  $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
+	$_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
+    $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
 	$_SESSION['last_login'] = time();
 	
 }

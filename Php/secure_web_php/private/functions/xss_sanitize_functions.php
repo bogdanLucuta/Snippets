@@ -15,10 +15,3 @@ function j($string) {
 function u($string) {
 	return urlencode($string);
 }
-
-// Usage examples, leave commented out
-// echo h("<h1>Test string</h1><br />");
-// echo j("'}; alert('Gotcha!'); //");
-// echo u("?title=Working? Or not?");
-
-?>

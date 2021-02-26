@@ -24,5 +24,3 @@ function add_ip_to_blacklist($ip) {
 	add_record_to_fake_db('blacklisted_ips', $record);
 	return true;
 }
-
-?>

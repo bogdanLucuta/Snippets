@@ -59,5 +59,3 @@ function throttle_failed_logins($username) {
 		return 0;
 	}
 }
-
-?>

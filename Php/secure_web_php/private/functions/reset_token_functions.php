@@ -63,5 +63,3 @@ function email_reset_token($username) {
 		return false;
 	}
 }
-
-?>

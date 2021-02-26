@@ -20,11 +20,11 @@ if($user && isset($user['reset_token'])) {
 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Password Reset Email</title>
-  </head>
-  <body>
+</head>
+<body>
 	
     <p>This page is a simulation of what a password reset token email might look like.</p>
 		<hr />
@@ -44,5 +44,5 @@ if($user && isset($user['reset_token'])) {
 		<p>If you did not make this request, you do not need to take any action. Your password cannot be changed without clicking the above link to verify the request.</p>
 		
 		<hr />
-  </body>
+</body>
 </html>

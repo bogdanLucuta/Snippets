@@ -13,7 +13,7 @@ $message = "";
 if(request_is_post() && request_is_same_domain()) {
 	
   if(!csrf_token_is_valid() || !csrf_token_is_recent()) {
-  	$message = "Sorry, request was not valid.";
+    $message = "Sorry, request was not valid.";
   } else {
     // CSRF tests passed--form was created by us recently.
 
@@ -26,13 +26,13 @@ if(request_is_post() && request_is_same_domain()) {
 			$sqlsafe_username = sql_prep($username);
 			$user = find_one_in_fake_db('users', 'username', $sqlsafe_username);
 
-	    if($user) {
+    if($user) {
 				// Username was found; okay to reset
 				create_reset_token($username);
 				email_reset_token($username);
-	    } else {
+    } else {
 	      // Username was not found; don't do anything
-	    }
+      }
 	
 			// Message returned is the same whether the user 
 			// was found or not, so that we don't reveal which 

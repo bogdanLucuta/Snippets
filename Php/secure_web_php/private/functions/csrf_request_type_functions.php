@@ -9,11 +9,3 @@ function request_is_get() {
 function request_is_post() {
 	return $_SERVER['REQUEST_METHOD'] === 'POST';
 }
-
-// Usage:
-// if(request_is_post()) {
-//   ... process form, update database, etc.
-// } else {
-//   ... do something safe, redirect, error page, etc.
-// }
-?>

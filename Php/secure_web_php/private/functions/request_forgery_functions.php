@@ -16,14 +16,3 @@ function request_is_same_domain() {
 		return ($referer_host == $server_host) ? true : false;
 	}
 }
-
-// Uncomment for testing
-// if(request_is_same_domain()) {
-// 	echo 'Same domain. POST requests should be allowed.<br />';
-// } else {
-// 	echo 'Different domain. POST requests should be forbidden.<br />';
-// }
-// echo '<br />';
-// echo '<a href="">Same domain link</a><br />';
-
-?>

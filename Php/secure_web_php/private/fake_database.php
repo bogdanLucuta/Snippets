@@ -9,10 +9,10 @@
 function initialize_fake_database() {
 	if(!isset($_SESSION['fake_database'])) {
 		$users = [
-		  [
+		[
 				'id' => 1, 
-				'username' => 'kskoglund', 
-				'hashed_password' => password_hash('secret', PASSWORD_BCRYPT)
+				'username' => 'bogdan', 
+				'hashed_password' => password_hash('bogdan', PASSWORD_BCRYPT)
 			], [
 				'id' => 2, 
 				'username' => 'jsmith',
@@ -48,20 +48,20 @@ function find_all_in_fake_db($table, $key, $value) {
 	$fake_db = $_SESSION['fake_database'];
 	$fake_table = $fake_db[$table];
 	$results = [];
-  foreach($fake_table as $record) {
-    if (isset($record[$key]) && $record[$key] == $value) {
-			// This is a matching record, add it to results array
-      $results[] = $record;
-    }
-  }
-  return $results;
+	foreach($fake_table as $record) {
+		if (isset($record[$key]) && $record[$key] == $value) {
+				// This is a matching record, add it to results array
+		$results[] = $record;
+		}
+	}
+    return $results;
 }
 
 // Returns first matching record or null
 function find_one_in_fake_db($table, $key, $value) {
 	$results = find_all_in_fake_db($table, $key, $value);
 	$result = count($results) > 0 ? $results[0] : null;
-  return $result;
+    return $result;
 }
 
 // Add a new record to the specified fake table
@@ -87,17 +87,15 @@ function update_record_in_fake_db($table, $key, $new_record) {
 	
 	// use a reference (&) so that the update happens to
 	// the record in the table.
-  foreach($fake_table as &$record) {
+    foreach($fake_table as &$record) {
     if (isset($record[$key]) && $record[$key] == $value) {
       // This is the record to update
 			$record = array_merge($record, $new_record);
     }
-  }
+}
 	
 	// replace old data with updated versions
 	$fake_db[$table] = $fake_table;
 	$_SESSION['fake_database'] = $fake_db;
 	return true;
 }
-
-?>

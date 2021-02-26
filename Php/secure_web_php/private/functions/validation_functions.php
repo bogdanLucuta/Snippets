@@ -22,7 +22,7 @@
 // empty() would consider "0" to be empty
 function has_presence($value) {
 	$trimmed_value = trim($value);
-  return isset($trimmed_value) && $trimmed_value !== "";
+    return isset($trimmed_value) && $trimmed_value !== "";
 }
 
 // * validate value has string length
@@ -74,12 +74,12 @@ function has_number($value, $options=[]) {
 
 // * validate value is inclused in a set
 function has_inclusion_in($value, $set=[]) {
-  return in_array($value, $set);
+    return in_array($value, $set);
 }
 
 // * validate value is excluded from a set
 function has_exclusion_from($value, $set=[]) {
-  return !in_array($value, $set);
+    return !in_array($value, $set);
 }
 
 // * validate uniqueness

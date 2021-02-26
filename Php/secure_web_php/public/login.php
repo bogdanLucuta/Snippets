@@ -17,9 +17,9 @@ $message = "";
 
 if(request_is_post() && request_is_same_domain()) {
 	
-  if(!csrf_token_is_valid() || !csrf_token_is_recent()) {
-  	$message = "Sorry, request was not valid.";
-  } else {
+if(!csrf_token_is_valid() || !csrf_token_is_recent()) {
+	$message = "Sorry, request was not valid.";
+} else {
     // CSRF tests passed--form was created by us recently.
 
 		// retrieve the values submitted via the form
@@ -40,50 +40,50 @@ if(request_is_post() && request_is_same_domain()) {
 				$sqlsafe_username = sql_prep($username);
 				$user = find_one_in_fake_db('users', 'username', $sqlsafe_username);
 
-		    if($user && password_verify($password, $user['hashed_password'])) {
-		    	// successful login
-					clear_failed_logins($username);
-		      after_successful_login();
-		      redirect_to('private.php');
-		    } else {
-		      // failed login
-					record_failed_login($username);
-		      $message = "Username/password combination not found.";
-		    }
+				if($user && password_verify($password, $user['hashed_password'])) {
+					// successful login
+						clear_failed_logins($username);
+				after_successful_login();
+				redirect_to('private.php');
+				} else {
+				// failed login
+						record_failed_login($username);
+				$message = "Username/password combination not found.";
+				}
 		
 			}
 			
 		} else {
 			// username or password left blank, just re-display the form.
 		}
-  }
+}
 }
 
 ?>
 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Log in</title>
-  </head>
-  <body>
+</head>
+<body>
     
     <?php
-      if($message != "") {
+    if($message != "") {
         echo '<p>' . h($message) . '</p>';
-      }
+    }
     ?>
     
     <p>Please log in.</p>
     
     <form action="login.php" method="POST" accept-charset="utf-8">
-      <?php echo csrf_token_tag(); ?>
-      Username: <input type="text" name="username" value="<?php echo h($username); ?>" /><br />
+    <?php echo csrf_token_tag(); ?>
+    Username: <input type="text" name="username" value="<?php echo h($username); ?>" /><br />
 			<br />
-      Password: <input type="password" name="password" value="" /><br />
+    Password: <input type="password" name="password" value="" /><br />
 			<br />
-      <input type="submit" name="submit" value="Log in" />
+    <input type="submit" name="submit" value="Log in" />
     </form>
 		
 		<br />
@@ -96,5 +96,5 @@ echo "--- fake database contents ---";
 var_dump($_SESSION['fake_database']);
 echo "------------------------------";
 ?>
-  </body>
+</body>
 </html>

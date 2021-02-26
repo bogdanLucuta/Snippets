@@ -17,9 +17,9 @@ if(!isset($user)) {
 
 if(request_is_post() && request_is_same_domain()) {
 	
-  if(!csrf_token_is_valid() || !csrf_token_is_recent()) {
-  	$message = "Sorry, request was not valid.";
-  } else {
+if(!csrf_token_is_valid() || !csrf_token_is_recent()) {
+	$message = "Sorry, request was not valid.";
+} else {
     // CSRF tests passed--form was created by us recently.
 
 		// retrieve the values submitted via the form
@@ -50,28 +50,28 @@ if(request_is_post() && request_is_same_domain()) {
 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Reset Password</title>
-  </head>
-  <body>
+</head>
+<body>
 
     <?php
-      if($message != "") {
+    if($message != "") {
         echo '<p>' . h($message) . '</p>';
-      }
+    }
     ?>
 
     <p>Set your new password.</p>
     
 		<?php $url = "reset_password.php?token=" . u($token); ?>
     <form action="<?php echo $url; ?>" method="POST" accept-charset="utf-8">
-      <?php echo csrf_token_tag(); ?>
-      Password: <input type="password" name="password" value="" /><br />
+    <?php echo csrf_token_tag(); ?>
+    Password: <input type="password" name="password" value="" /><br />
 			<br />
-      Confirm Password: <input type="password" name="password_confirm" value="" /><br />
+    Confirm Password: <input type="password" name="password_confirm" value="" /><br />
 			<br />
-      <input type="submit" name="submit" value="Set password" />
+    <input type="submit" name="submit" value="Set password" />
     </form>
 
 <?php
@@ -82,5 +82,5 @@ var_dump($_SESSION['fake_database']);
 echo "------------------------------";
 ?>
 
-  </body>
+</body>
 </html>
